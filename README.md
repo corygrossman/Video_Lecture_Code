@@ -12,8 +12,8 @@ Individual code submission from the intro to swe final project.
 7. yarn start
 
 ## Code Responsibile for:
- - Room.js
- - CreateRoom.js
+ - client/src/routes/Room.js
+ - client/src/routes/CreateRoom.js
  - server.js
 
 ## Demo Homepage:
