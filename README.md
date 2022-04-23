@@ -2,7 +2,7 @@
 Individual code submission from the intro to swe final project.
 
 
-## Install and Start ION-SFU instruction
+## Install and Start Front and Backend
 1. cd into the cloned repo
 2. yarn
 3. Node server.js
