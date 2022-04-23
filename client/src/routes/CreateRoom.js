@@ -1,18 +1,23 @@
 import React from "react";
 import styled from "styled-components";
 
-const buttonStyle = styled.button`
-    padding: 10px;
-    border-color: #3d3b40;
+const But = styled.button`
+    padding: 30px;
+    border-color: #FFFFFF;
+    color: #FFFFFF;
+    border: 2px;
     border-radius: 2px;
 `;
 
-const container = styled.div`
-    padding: 10px;
-    border-color: #3d3b40;
-    border-radius: 2px;
+const Container = styled.div`
+    display: flex;
+    margin: auto;
+    flex-wrap: wrap;
+    background-color: #3d3b40;
+    align-items: center;
 `;
 
+//sets a demo homepage
 const CreateRoom = (props) => {
     //navigates to the teacher view
     function teachercreate() {
@@ -27,10 +32,10 @@ const CreateRoom = (props) => {
 
     return (
         <>
-        <container>
-        <buttonStyle onClick={teachercreate}>Teacher Button</buttonStyle>
-        <buttonStyle onClick={studentcreate}>Student Button</buttonStyle>
-        </container>
+        <Container>
+        <But onClick={teachercreate}>Teacher Button</But>
+        <But onClick={studentcreate}>Student Button</But>
+        </Container>
         </>
     );
 };

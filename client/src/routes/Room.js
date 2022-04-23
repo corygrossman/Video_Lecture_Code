@@ -14,6 +14,7 @@ const URL = new URLSearchParams(window.location.search).get("isTeacher");
     isTeacher =false;
   }
 
+  //sets up the styles for the returned html elements
 const Container = styled.div`
     display: flex;
     width: 100%;
@@ -56,6 +57,7 @@ const StyledTeacherVideo = styled.video`
     margin: auto;
 `;
 
+//returns a student video
 const Video = (props) => {
     const ref = useRef();
 
@@ -71,6 +73,7 @@ const Video = (props) => {
     );
 }
 
+//returns a teacher video
 const TeacherVideo = (props) => {
     const ref = useRef();
 
@@ -102,12 +105,20 @@ const Room = (props) => {
 
 
     useEffect(() => {
+
+        //connects to the backend server via calling the socket from a room
         socketRef.current = io.connect('http://localhost:8000');
         console.log(courseCode.courseCode);
         
+        //once the media is retrieved
         navigator.mediaDevices.getUserMedia({ video: videoConstraints, audio: true }).then(stream => {
+            //sets the users source as video and audio
             userVideo.current.srcObject = stream;
+
+            //emits to the server that the user is connecting to the room "courseCode"
             socketRef.current.emit("join room", courseCode.courseCode);
+
+            //for anyone that is already in the room, adds all of the peers to a peer array 
             socketRef.current.on("all users", users => {
                 const peers = [];
                 users.forEach(userID => {
@@ -121,6 +132,7 @@ const Room = (props) => {
                 setPeers(peers);
             });
 
+            //adds a peer to the peer array if a user joins in the middle of a lecture
             socketRef.current.on("user joined", payload => {
                 const peer = addPeer(payload.signal, payload.callerID, stream);
                 peersRef.current.push({
@@ -131,10 +143,13 @@ const Room = (props) => {
                 setPeers(users => [...users, peer]);
             });
 
+            //retrieves signal
             socketRef.current.on("receiving returned signal", payload => {
                 const item = peersRef.current.find(p => p.peerID === payload.id);
                 item.peer.signal(payload.signal);
             });
+
+            //currently working on updating the html when a user disconnects, so that a black video box gets deleted
 
             // socketRef.current.on("user disconnected", id => {
             //     console.log(id);
@@ -156,6 +171,7 @@ const Room = (props) => {
             stream,
         });
 
+        //emits an answer back to a peer
         peer.on("signal", signal => {
             socketRef.current.emit("sending signal", { userToSignal, callerID, signal })
         });
@@ -179,7 +195,7 @@ const Room = (props) => {
         return peer;
     }
 
-    //teacher view works correctly
+    //teacher view
     if(isTeacher){
         return (
             <Container>
@@ -196,6 +212,7 @@ const Room = (props) => {
             </Container>
         );
     }
+    //student view
     else{
         return (
             <Container>

@@ -6,3 +6,12 @@ Code Responsibile for:
  - CreateRoom.js
  - server.js
 
+Demo Homepage:
+ - When first navigated to the page, open the teacher view in a different tab.
+ - Open as many student views after initializing the call with the teacher.
+
+![alt text](https://github.com/corygrossman/Video_Lecture_Code/blob/main/data/homepage.PNG?raw=true)
+
+Video Lecture Page:
+
+![alt text](https://github.com/corygrossman/Video_Lecture_Code/blob/main/data/lecture_demo.PNG?raw=true)
