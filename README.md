@@ -6,8 +6,8 @@ Individual code submission from the intro to swe final project.
 1. cd into the cloned repo
 2. yarn
 3. Node server.js
-4. With that server still running, open up a new terminal, so you can execute the rest of these commands in the new terminal
-5. Navigate into client inside the cloned repo
+4. With that server still running, open up a new terminal
+5. cd into client inside the cloned repo
 6. yarn
 7. yarn start
 
@@ -15,6 +15,17 @@ Individual code submission from the intro to swe final project.
  - client/src/routes/Room.js
  - client/src/routes/CreateRoom.js
  - server.js
+
+## Languages
+ - Javascript
+ - HTML
+ - Styled-Components
+
+## Frameworks
+ - ReactJS
+ - NodeJS
+ - Socket.io (for web sockets)
+ - WebRTC (for real time data connections)
 
 ## Demo Homepage:
  - When first navigated to the page, open the teacher view in a different tab.
